@@ -1,0 +1,19 @@
+#!/bin/bash
+
+stack_name="$1"
+s3_bucket="$2"
+
+aws cloudformation create-stack \
+  --stack-name "${stack_name}" \
+  --template-body file://cloudformation.yaml \
+  --capabilities CAPABILITY_IAM \
+  --parameters ParameterKey=S3Bucket,ParameterValue="$s3_bucket" > /dev/null
+
+aws cloudformation wait stack-create-complete \
+  --stack-name "${stack_name}"
+
+aws cloudformation describe-stacks \
+  --stack-name "${stack_name}" \
+  --query 'Stacks[0].Outputs' \
+  --out text | \
+  cut -f 2
