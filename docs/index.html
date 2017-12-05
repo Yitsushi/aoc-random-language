@@ -32,6 +32,7 @@
         root.innerHTML = TEMPLATE;
         root.querySelector('#day').innerText = resp.day;
         root.querySelector('#language').innerText = resp.language;
+        root.querySelector('#jump').setAttribute('href', resp.url);
         var li_list = [];
         for (var day in resp.history) {
           if (!resp.history.hasOwnProperty(day)) { continue; }
