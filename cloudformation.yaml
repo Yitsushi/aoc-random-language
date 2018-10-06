@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Advent of Code 2017 random language generator
+Description: Advent of Code 2018 random language generator
 Parameters:
   S3Bucket:
     Description: S3 bucket where we store our lambda deployment artifacts
@@ -41,7 +41,7 @@ Resources:
   ApiFrontend:
     Type: AWS::ApiGateway::RestApi
     Properties:
-      Name: "API Gateway AoC2017"
+      Name: "API Gateway AoC2018"
   OptionsMethod:
     Type: AWS::ApiGateway::Method
     Properties:

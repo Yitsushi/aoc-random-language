@@ -4,10 +4,7 @@ from datetime import date
 
 # Language list with weight
 languages = {
-    'Go': 2,
-    'Ruby': 2,
-    'PHP': 2,
-    'JavaScript': 1,
+    'Go': 1,
     'Python': 1
 }
 
@@ -23,6 +20,7 @@ pool *= 20
 # Total number of days we want to handle
 number_of_days = 25
 # Make sure we get the same random numbers in order
+# Update for production
 random.seed(4080877)
 
 selected_languages = []
@@ -51,7 +49,7 @@ def index(event, context):
 
     if today.month != 12:
         return response({
-            'error': 'No AoC2017 yet! Patience, patience...'
+            'error': 'No AoC2018 yet! Patience, patience...'
         })
 
     history = {}
@@ -60,13 +58,13 @@ def index(event, context):
 
     if today.day > number_of_days:
         return response({
-            'error': 'No more AoC2017, sorry'
+            'error': 'No more AoC2018, sorry'
         })
 
     return response({
         'day': 'day-%02d' % (today.day),
         'language': selected_languages[today.day - 1],
-        'url': 'https://adventofcode.com/2017/day/%d' % (today.day),
+        'url': 'https://adventofcode.com/2018/day/%d' % (today.day),
         'history': history
     })
 
